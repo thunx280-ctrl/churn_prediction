@@ -1,0 +1,12 @@
+﻿# .gitignore
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+*.pkl
+.env
+.vscode/
+.DS_Store
+
+# Data artifacts
+/data/raw/*.xlsx
+/data/processed/*.csv
