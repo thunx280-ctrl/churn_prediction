@@ -6,7 +6,4 @@ __pycache__/
 .env
 .vscode/
 .DS_Store
-
-# Data artifacts
-/data/raw/*.xlsx
-/data/processed/*.csv
+.kilo/
