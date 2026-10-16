@@ -238,25 +238,6 @@ churn_prediction/
 
 ---
 
-## 💻 How to Run & Reproduce
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/thunx280-ctrl/churn_prediction.git
-cd churn_prediction
-
-# 2. Set up virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: .\venv\Scripts\Activate.ps1
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Run Jupyter Notebooks or inspect serialized model
-jupyter notebook notebooks/
-```
-
----
 
 ## 👤 Author & Contact
 
