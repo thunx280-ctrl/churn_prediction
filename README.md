@@ -122,6 +122,7 @@ notebooks/
 
 ##### [In 1]: Import thư viện cần thiết
 ```python
+# import các thư viện cần thiết
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -199,7 +200,7 @@ plt.show()
 | **1** (Rời bỏ) | 948 | **16.84%** |
 
 *(Ảnh chụp màn hình phân phối biến mục tiêu `sns.countplot`)*  
-<!-- [SCREENSHOT PLACEHOLDER: notebooks/01_data_understanding.ipynb - Target Distribution Countplot] -->
+<img width="1464" height="986" alt="{3F7FC70A-F81D-443A-9FC2-1B0A41D15170}" src="https://github.com/user-attachments/assets/54ed00af-3aa9-4bf6-b586-b0da557b124d" />
 
 ##### [In 9] & [In 10]: Kiểm tra giá trị thiếu (Missing Values)
 ```python
@@ -224,7 +225,7 @@ display(missing_df)
 | `WarehouseToHome` | 251 | 4.46% |
 
 *(Ảnh chụp màn hình ma trận missing values `msno.matrix`)*  
-<!-- [SCREENSHOT PLACEHOLDER: notebooks/01_data_understanding.ipynb - Missingno Matrix] -->
+<img width="2614" height="1362" alt="{0DBAF79C-0637-42C7-B21A-CA4884CCF854}" src="https://github.com/user-attachments/assets/a985def7-d054-421c-8016-a04a288ed2ca" />
 
 ##### [In 11]: Kiểm tra dòng trùng lặp
 ```python
