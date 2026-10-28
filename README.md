@@ -325,8 +325,8 @@ DaySinceLastOrder             -0.160757
 Tenure                        -0.349408
 Name: Churn, dtype: float64
 ```
-*(Ảnh chụp màn hình Heatmap Correlation Matrix)*  
-<!-- [SCREENSHOT PLACEHOLDER: notebooks/02_eda.ipynb - Correlation Matrix Heatmap] -->
+*(Heatmap Correlation Matrix)*  
+<img width="2379" height="1492" alt="{77038A43-9DEF-4541-965A-DAFBA6FD539D}" src="https://github.com/user-attachments/assets/88553ccb-0f75-4c88-883b-9da1467e9ac1" />
 
 #### 💡 Kết luận Rút ra từ Bước 2:
 1. **Thời gian gắn bó (`Tenure`) là yếu tố bảo vệ mạnh nhất:** Tương quan âm rõ nét nhất với Churn (**$-0.349$**). Khách hàng có thời gian gắn bó ngắn hoặc mới tham gia có nguy cơ rời bỏ cực cao; khi tenure vượt qua mốc 12 tháng, tỷ lệ rời bỏ giảm mạnh.
@@ -533,6 +533,8 @@ lr = Pipeline([
 lr.fit(X_train, y_train)
 results = [evaluate_model(lr, X_test, y_test, 'LogisticRegression')]
 ```
+[Out 3:]
+<img width="1242" height="198" alt="{9F2D6561-7241-4CC7-9116-ED674C4A74C4}" src="https://github.com/user-attachments/assets/a2fb3b09-f4ab-4b77-abb9-c47a1956f124" />
 
 ##### [In 5]: Bước 4.2 - Random Forest Classifier
 ```python
@@ -540,6 +542,8 @@ rf = RandomForestClassifier(n_estimators=300, class_weight='balanced', random_st
 rf.fit(X_train, y_train)
 results.append(evaluate_model(rf, X_test, y_test, 'RandomForest'))
 ```
+[Out 5]:
+<img width="1272" height="289" alt="{36ED1687-B4C5-4E68-B216-A40C76F4CA93}" src="https://github.com/user-attachments/assets/81b8a846-74bc-48c3-af24-ad8a8ce3622f" />
 
 ##### [In 7]: Bước 4.3 - XGBoost Classifier (`scale_pos_weight = 4.94`)
 ```python
@@ -551,6 +555,7 @@ xgb = XGBClassifier(
 xgb.fit(X_train, y_train)
 results.append(evaluate_model(xgb, X_test, y_test, 'XGBoost'))
 ```
+<img width="1233" height="372" alt="{BD3D62BF-F54C-4B45-AAA3-229104341EA0}" src="https://github.com/user-attachments/assets/c7e7abd2-7cf3-43e3-a144-d2b745b4fbee" />
 
 ##### [In 9]: Bước 4.4 - LightGBM Classifier (`class_weight='balanced'`)
 ```python
@@ -558,6 +563,7 @@ lgbm = LGBMClassifier(n_estimators=300, learning_rate=0.1, num_leaves=31, class_
 lgbm.fit(X_train, y_train)
 results.append(evaluate_model(lgbm, X_test, y_test, 'LightGBM'))
 ```
+<img width="1278" height="406" alt="{0D8B394D-F865-47DF-B1E7-7AE09D643A8E}" src="https://github.com/user-attachments/assets/ea219107-affc-4d5d-b1cc-681c87109313" />
 
 ##### [In 11]: Bước 4.5 - Bảng Tổng hợp So sánh Mô hình
 ```python
@@ -572,8 +578,8 @@ results_df.round(4)
 | **XGBoost** | 0.9671 | 0.8844 | 0.9263 | 0.9049 | 0.9862 |
 | **LogisticRegression** | 0.8242 | 0.4879 | 0.8474 | 0.6192 | 0.9043 |
 
-*(Ảnh chụp màn hình biểu đồ so sánh mô hình bar chart `results_df.plot`)*  
-<!-- [SCREENSHOT PLACEHOLDER: notebooks/04_model_training.ipynb - Model Comparison Bar Chart] -->
+*(Bbiểu đồ so sánh mô hình bar chart `results_df.plot`)*  
+<img width="2622" height="1195" alt="{945DB1EF-4E32-4199-BB6A-A2F16DB876AF}" src="https://github.com/user-attachments/assets/84afca9e-283b-45ca-8cff-f335a65581e8" />
 
 ##### [In 13]: Bước 4.6 - Tuning Hyperparameter LightGBM với `RandomizedSearchCV`
 Dùng `RandomizedSearchCV` (cv=5, n_iter=50) tối ưu hóa chỉ số `f1` trên mô hình LightGBM:
@@ -691,8 +697,8 @@ Chi tiết cấu trúc ma trận nhầm lẫn:
 * **True Negative (TN = 921):** 921 khách hàng không rời bỏ được nhận diện chính xác.
 * **False Positive (FP = 15):** Chỉ có 15 trường hợp báo động nhầm (**Precision đạt 92.31%**), giúp doanh nghiệp không bị lãng phí ngân sách ưu đãi cho khách hàng vốn đang hài lòng.
 
-*(Ảnh chụp màn hình Confusion Matrix Heatmap)*  
-<!-- [SCREENSHOT PLACEHOLDER: notebooks/05_model_evaluation.ipynb - Confusion Matrix Heatmap] -->
+*(Confusion Matrix Heatmap)*  
+<img width="1342" height="1175" alt="{18802048-1F77-4F28-8D60-0701E39840DD}" src="https://github.com/user-attachments/assets/29aa842d-968d-4bb5-b853-7fc73393357f" />
 
 ##### [In 5]: Đường cong ROC & ROC-AUC
 ```python
@@ -711,7 +717,8 @@ plt.show()
 ##### [Out 5]: **ROC-AUC = 0.9930** (Khả năng phân biệt hai lớp gần như hoàn hảo).
 
 *(Ảnh chụp màn hình ROC Curve)*  
-<!-- [SCREENSHOT PLACEHOLDER: notebooks/05_model_evaluation.ipynb - ROC Curve] -->
+<img width="1674" height="1179" alt="{697F9FBD-5962-4954-94A9-9B7AB985E613}" src="https://github.com/user-attachments/assets/2a0503b2-746d-4717-b0e2-b27157c040f1" />
+
 
 ##### [In 7]: Precision-Recall Curve & PR-AUC
 ```python
@@ -730,7 +737,7 @@ plt.show()
 ##### [Out 7]: **PR-AUC = 0.9690** (Chứng minh độ ổn định vượt bậc trên dữ liệu mất cân bằng).
 
 *(Ảnh chụp màn hình Precision-Recall Curve)*  
-<!-- [SCREENSHOT PLACEHOLDER: notebooks/05_model_evaluation.ipynb - Precision-Recall Curve] -->
+<img width="1640" height="1184" alt="{D8FB72BD-E08E-4324-9487-5DC4E05D2E28}" src="https://github.com/user-attachments/assets/ab282f54-3c49-401e-ae3f-661a19073a73" />
 
 ##### [In 9]: Feature Importance (Giải thích Mô hình)
 ```python
@@ -750,7 +757,7 @@ plt.tight_layout()
 plt.show()
 ```
 *(Ảnh chụp màn hình Top 15 Feature Importances)*  
-<!-- [SCREENSHOT PLACEHOLDER: notebooks/05_model_evaluation.ipynb - Feature Importance Barh Plot] -->
+<img width="2178" height="1465" alt="{F56A2C35-C5EE-4421-95E1-30AD9E2F2DFE}" src="https://github.com/user-attachments/assets/0c201cb4-6533-496d-b568-586c61e41973" />
 
 #### 💡 Kết luận Rút ra từ Bước 5:
 1. **False Negative cực thấp (10 tài khoản):** Đáp ứng tiêu chuẩn triển khai thực tế của doanh nghiệp, giảm thiểu nguy cơ mất doanh thu định kỳ từ nhóm khách hàng có giá trị.
@@ -774,88 +781,7 @@ Dựa trên kết quả phân tích dữ liệu và trích xuất đặc trưng 
 
 ---
 
-## 🚀 Phân khúc Rủi ro & Ma trận Hành động CRM
 
-Kết hợp giữa xác suất dự báo $P(\text{Churn} = 1)$ từ mô hình LightGBM với các cờ rủi ro vận hành (`Complain = 1`, `TenureGroup = New`), khách hàng được phân chia thành **3 phân tầng hành động cụ thể**:
-
-```mermaid
-flowchart TD
-    subgraph CRMFramework["🎯 Ma trận Hành động Giữ chân Khách hàng (CRM Retention Playbook)"]
-        direction TB
-
-        subgraph Tier1["🚨 Tier 1: Can thiệp Khủng hoảng (P ≥ 0.70 HOẶC Complain = 1)"]
-            T1_desc["<b>Đặc điểm:</b> Rủi ro cao nhất, nguy cơ rời bỏ tức thì.<br/><b>Hành động:</b><br/>• Chuyển tiếp hồ sơ sang Đội ngũ CS cao cấp gọi trực tiếp trong 4 giờ.<br/>• Tặng ngay voucher hoàn tiền 10$ vào ví tài khoản + miễn phí vận chuyển đơn kế tiếp.<br/>• Thu thập phản hồi để khắc phục lỗi hệ thống."]
-        end
-
-        subgraph Tier2["📦 Tier 2: Giải cứu Khách hàng Mới (0.40 ≤ P < 0.70 & Tenure ≤ 12 tháng)"]
-            T2_desc["<b>Đặc điểm:</b> Khách hàng mới đang ở giai đoạn làm quen nền tảng.<br/><b>Hành động:</b><br/>• Gửi chuỗi tin nhắn hướng dẫn sử dụng tính năng ứng dụng.<br/>• Kích hoạt thử thách: Đặt đơn thứ 2 trong 14 ngày để nhận ưu đãi 15%.<br/>• Gợi ý sản phẩm phù hợp dựa trên lịch sử xem hàng gần nhất."]
-        end
-
-        subgraph Tier3["💰 Tier 3: Tái kích hoạt Khách hàng Ngủ đông (0.20 ≤ P < 0.40 & Recency > 10 ngày)"]
-            T3_desc["<b>Đặc điểm:</b> Khách hàng cũ có dấu hiệu giảm tần suất tương tác.<br/><b>Hành động:</b><br/>• Kích hoạt chiến dịch email 'Chúng tôi nhớ bạn' (We Miss You) vào ngày thứ 10.<br/>• Cung cấp mã giảm giá cá nhân hóa có thời hạn 48 giờ.<br/>• Đẩy thông báo giá tốt cho các sản phẩm trong giỏ hàng đang chờ."]
-        end
-    end
-
-    Tier1 --> Tier2 --> Tier3
-```
-
----
-
-## 📁 Cấu trúc Thư mục Dự án
-
-```
-churn_prediction/
-├── assets/
-│   └── screenshots/                # Thư mục lưu trữ ảnh chụp màn hình các bước từ 5 notebooks
-├── data/
-│   ├── raw/
-│   │   └── churn_prediction.xlsx   # Dữ liệu gốc từ doanh nghiệp E-Commerce (5,630 dòng x 20 cột)
-│   └── processed/
-│       ├── train_processed.csv     # Tập train đã qua xử lý chuẩn mực, không rò rỉ (4,504 dòng x 39 cột)
-│       └── test_processed.csv      # Tập test độc lập dùng đánh giá mô hình (1,126 dòng x 39 cột)
-├── models/
-│   └── churn_pipeline.pkl          # File serialized của mô hình LightGBM tốt nhất (sử dụng joblib)
-├── notebooks/                      # 5 Notebooks chính của dự án
-│   ├── 01_data_understanding.ipynb # Bước 1: Kiểm toán cấu trúc, missing values & target imbalance
-│   ├── 02_eda.ipynb                # Bước 2: Khám phá phân phối, ma trận tương quan & xu hướng churn
-│   ├── 03_feature_engineering.ipynb# Bước 3: Chia train/test, điền missing, tạo biến mới & encode
-│   ├── 04_model_training.ipynb     # Bước 4: Benchmark mô hình, tuning LightGBM & lưu pipeline
-│   └── 05_model_evaluation.ipynb   # Bước 5: Đánh giá Confusion Matrix, ROC-AUC, PR-AUC & Feature Importance
-├── .gitignore                      # Cấu hình bỏ qua các file tạm thời, checkpoints
-├── README.md                       # Tài liệu báo cáo hoàn chỉnh dự án portfolio
-└── requirements.txt                # Danh sách thư viện Python cần thiết (scikit-learn, lightgbm, xgboost...)
-```
-
----
-
-## 💻 Hướng dẫn Cài đặt & Tái hiện
-
-### 1. Sao chép Kho mã nguồn (Clone Repository)
-```bash
-git clone https://github.com/thunx280-ctrl/churn_prediction.git
-cd churn_prediction
-```
-
-### 2. Thiết lập Môi trường Ảo (Virtual Environment)
-```bash
-# Trên Windows (PowerShell)
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-
-# Trên Linux / macOS
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Cài đặt các Thư viện Phụ thuộc
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Khởi chạy Jupyter Notebooks
-```bash
-jupyter notebook notebooks/
-```
 *Lưu ý: Mở và chạy tuần tự các notebook từ `01` đến `05` để tái hiện toàn bộ kết quả phân tích và đánh giá.*
 
 ### 5. Sử dụng Mô hình đã Lưu để Dự báo (Inference)
