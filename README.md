@@ -15,7 +15,7 @@
 **Tác giả:** [Nguyễn Xuân Thu](https://github.com/thunx280-ctrl)  
 **Vai trò:** Data Analyst / Machine Learning Enthusiast  
 **Công cụ sử dụng:** Python (Pandas, NumPy, Scikit-Learn, LightGBM, XGBoost, Matplotlib, Seaborn, Joblib)  
-**Tập dữ liệu:** E-Commerce Customer Churn Dataset (5,630 dòng $\times$ 20 cột thuộc tính)  
+**Tập dữ liệu:** E-Commerce Customer Churn Dataset (5,630 dòng × 20 cột thuộc tính)  
 
 ---
 
@@ -64,7 +64,7 @@ Dự án này tập trung xây dựng **Hệ thống Cảnh báo Sớm Khách h�
 ## 📂 Mô tả & Cấu trúc Tập dữ liệu
 
 * **Nguồn dữ liệu:** Cơ sở dữ liệu giao dịch và hồ sơ người dùng của nền tảng E-Commerce.
-* **Quy mô:** 5,630 dòng $\times$ 20 cột thuộc tính.
+* **Quy mô:** 5,630 dòng × 20 cột thuộc tính.
 * **Định dạng:** Microsoft Excel (`.xlsx`) tại đường dẫn `data/raw/churn_prediction.xlsx`.
 
 <details>
@@ -329,9 +329,9 @@ Name: Churn, dtype: float64
 <img width="2379" height="1492" alt="{77038A43-9DEF-4541-965A-DAFBA6FD539D}" src="https://github.com/user-attachments/assets/88553ccb-0f75-4c88-883b-9da1467e9ac1" />
 
 #### 💡 Kết luận Rút ra từ Bước 2:
-1. **Thời gian gắn bó (`Tenure`) là yếu tố bảo vệ mạnh nhất:** Tương quan âm rõ nét nhất với Churn (**$-0.349$**). Khách hàng có thời gian gắn bó ngắn hoặc mới tham gia có nguy cơ rời bỏ cực cao; khi tenure vượt qua mốc 12 tháng, tỷ lệ rời bỏ giảm mạnh.
-2. **Khiếu nại (`Complain`) là tín hiệu cảnh báo rủi ro lớn nhất:** Tương quan dương cao nhất (**$+0.250$**). Khách hàng gặp trục trặc dịch vụ dẫn đến khiếu nại có tỷ lệ rời bỏ tăng vọt lên **31.7%** (so với 10.9% ở nhóm không có khiếu nại, gấp gần 3 lần).
-3. **Mức độ tương tác & Ưu đãi:** `DaySinceLastOrder` ($-0.161$) và `CashbackAmount` ($-0.154$) cho thấy khách hàng lâu ngày không đặt đơn hoặc nhận ít tiền hoàn có xu hướng rời bỏ cao hơn.
+1. **Thời gian gắn bó (`Tenure`) là yếu tố bảo vệ mạnh nhất:** Tương quan âm rõ nét nhất với Churn (**-0.349**). Khách hàng có thời gian gắn bó ngắn hoặc mới tham gia có nguy cơ rời bỏ cực cao; khi tenure vượt qua mốc 12 tháng, tỷ lệ rời bỏ giảm mạnh.
+2. **Khiếu nại (`Complain`) là tín hiệu cảnh báo rủi ro lớn nhất:** Tương quan dương cao nhất (**+0.250**). Khách hàng gặp trục trặc dịch vụ dẫn đến khiếu nại có tỷ lệ rời bỏ tăng vọt lên **31.7%** (so với 10.9% ở nhóm không có khiếu nại, gấp gần 3 lần).
+3. **Mức độ tương tác & Ưu đãi:** `DaySinceLastOrder` (-0.161) và `CashbackAmount` (-0.154) cho thấy khách hàng lâu ngày không đặt đơn hoặc nhận ít tiền hoàn có xu hướng rời bỏ cao hơn.
 4. **Phân hóa theo tình trạng hôn nhân:** Nhóm `Single` (độc thân) có tỷ lệ rời bỏ cao nhất (**~26.7%**), tiếp theo là `Divorced` (**~14.6%**) và thấp nhất là `Married` (**~11.5%**).
 5. Vì không có một biến đơn lẻ nào giải thích 100% việc churn, bước tiếp theo cần kỹ thuật trích xuất đặc trưng (feature engineering) và mô hình hóa phi tuyến để tối ưu hóa dự báo.
 
@@ -444,11 +444,11 @@ X_test = add_features(X_test)
 ##### [Out 12]: Kiểm tra tỷ lệ Churn theo các biến mới
 * **Theo `IsRecentBuyer`:**
   * `0` (Dormant, > 7 ngày): **9.58%** Churn
-  * `1` (Recent Buyer, $\le 7$ ngày): **18.99%** Churn (Nhóm mua gần đây nhưng gặp sự cố dịch vụ thường chủ động rời bỏ)
+  * `1` (Recent Buyer, ≤ 7 ngày): **18.99%** Churn (Nhóm mua gần đây nhưng gặp sự cố dịch vụ thường chủ động rời bỏ)
 * **Theo `TenureGroup`:**
-  * `New` ($\le 12$ tháng): **22.93%** Churn (Vùng nguy hiểm nhất)
-  * `Mid` ($12-36$ tháng): **5.18%** Churn
-  * `Senior` ($> 36$ tháng): **0.00%** Churn (Tuyệt đối trung thành)
+  * `New` (≤ 12 tháng): **22.93%** Churn (Vùng nguy hiểm nhất)
+  * `Mid` (12–36 tháng): **5.18%** Churn
+  * `Senior` (> 36 tháng): **0.00%** Churn (Tuyệt đối trung thành)
 
 ##### [In 14]: Bước 3.5 - One-Hot Encoding & Căn chỉnh Cột Train/Test
 ```python
@@ -770,10 +770,10 @@ plt.show()
 
 Dựa trên kết quả phân tích dữ liệu và trích xuất đặc trưng của mô hình, bảng ma trận sau đây đối chiếu rõ nét sự khác biệt giữa hai nhóm khách hàng và đề xuất giải pháp chiến lược:
 
-| Đặc trưng Quan sát | Nhóm Ở lại (Non-Churn: $N=4,682$) | Nhóm Rời bỏ (Churn: $N=948$) | Insight Hành vi Nghiệp vụ | Khuyến nghị Giữ chân (Retention Action) |
+| Đặc trưng Quan sát | Nhóm Ở lại (Non-Churn: N = 4,682) | Nhóm Rời bỏ (Churn: N = 948) | Insight Hành vi Nghiệp vụ | Khuyến nghị Giữ chân (Retention Action) |
 | :--- | :--- | :--- | :--- | :--- |
 | **`Tenure` (Vòng đời gắn bó)** | Trung vị: **10 tháng**; phân bổ đều từ 10–30 tháng. | Trung vị: **2 tháng**; hơn 80% rời bỏ trong vòng 5 tháng đầu. | **Giai đoạn Onboarding là bước tử huyệt:** Khách hàng mới rời bỏ rất sớm nếu trải nghiệm ban đầu không trọn vẹn. | Xây dựng chương trình đồng hành 90 ngày đầu (Welcome Journeys), thưởng voucher tích lũy cho đơn thứ 2 và thứ 3. |
-| **`Complain` (Khiếu nại hỗ trợ)** | Chỉ **10.9%** khách hàng từng gửi khiếu nại. | Lên tới **31.7%** khách hàng từng khiếu nại ($3\times$). | **Dịch vụ CS yếu kém đẩy khách đi:** Khiếu nại không được giải quyết nhanh là động cơ rời bỏ tức thì. | Đặt SLA khẩn cấp: Với khách hàng khiếu nại có xác suất churn cao, quản lý CS phải liên hệ hỗ trợ trong vòng 4 giờ kèm ưu đãi bù đắp. |
+| **`Complain` (Khiếu nại hỗ trợ)** | Chỉ **10.9%** khách hàng từng gửi khiếu nại. | Lên tới **31.7%** khách hàng từng khiếu nại (gấp gần 3 lần). | **Dịch vụ CS yếu kém đẩy khách đi:** Khiếu nại không được giải quyết nhanh là động cơ rời bỏ tức thì. | Đặt SLA khẩn cấp: Với khách hàng khiếu nại có xác suất churn cao, quản lý CS phải liên hệ hỗ trợ trong vòng 4 giờ kèm ưu đãi bù đắp. |
 | **`DaySinceLastOrder` (Recency)** | Chủ yếu dưới 5 ngày; tần suất mua lặp lại ổn định. | Thường vượt quá 12–20 ngày không phát sinh đơn. | **Dấu hiệu ngủ đông (Dormancy):** Khoảng cách giữa các đơn tăng dần là tín hiệu cảnh báo trước khi hủy app. | Thiết lập luồng email/push tự động nhắc nhở vào ngày thứ 10, gửi mã giảm giá đúng danh mục yêu thích (`PreferedOrderCat`). |
 | **`CashbackAmount` (Hoàn tiền)** | Tập trung trong khoảng 160 – 220 đơn vị tiền tệ. | Tập trung dưới 140; phân bổ phân tán. | **Cạnh tranh về lợi ích:** Khách hàng nhận được ít ưu đãi hoàn tiền cảm thấy không được trân trọng. | Tái cấu trúc chính sách khách hàng thân thiết theo bậc (Tiered Loyalty), tăng tỷ lệ hoàn tiền khi duy trì tần suất mua. |
 | **`WarehouseToHome` (Khoảng cách giao hàng)** | Đa số dưới 15 km; thời gian nhận hàng nhanh. | Nhiều khách hàng ở xa từ 25 – 35 km. | **Áp lực thời gian giao hàng:** Khoảng cách xa gây trễ đơn, ảnh hưởng tiêu cực đến trải nghiệm nhận hàng. | Tối ưu hóa chuỗi cung ứng với các hub vệ tinh 3PL; hỗ trợ miễn phí vận chuyển hỏa tốc cho khách hàng ở xa. |
