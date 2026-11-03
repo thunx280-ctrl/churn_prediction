@@ -25,20 +25,20 @@
 1. [Background Overview & Business Context](#-1-background-overview--business-context)
 2. [Dataset Architecture & Data Dictionary](#-2-dataset-architecture--data-dictionary)
 3. [End-to-End Machine Learning Workflow (5 Notebooks)](#-3-end-to-end-machine-learning-workflow-5-notebooks)
-   - [Notebook 1: Data Understanding & Quality Audit (`01_data_understanding.ipynb`)](#notebook-1-data-understanding--quality-audit-01_data_understandingipynb)
-   - [Notebook 2: Exploratory Data Analysis & Churn Dynamics (`02_eda.ipynb`)](#notebook-2-exploratory-data-analysis--churn-dynamics-02_edaipynb)
-   - [Notebook 3: Leak-Free Feature Engineering & Transformation (`03_feature_engineering.ipynb`)](#notebook-3-leak-free-feature-engineering--transformation-03_feature_engineeringipynb)
-   - [Notebook 4: Model Training, Multi-Algorithm Benchmark & Tuning (`04_model_training.ipynb`)](#notebook-4-model-training-multi-algorithm-benchmark--tuning-04_model_trainingipynb)
-   - [Notebook 5: Rigorous Validation, Cost Analysis & Explainability (`05_model_evaluation.ipynb`)](#notebook-5-rigorous-validation-cost-analysis--explainability-05_model_evaluationipynb)
+   - [Notebook 1: Data Understanding (`01_data_understanding.ipynb`)](#notebook-1-data-understanding-01_data_understandingipynb)
+   - [Notebook 2: Exploratory Data Analysis (`02_eda.ipynb`)](#notebook-2-exploratory-data-analysis-02_edaipynb)
+   - [Notebook 3: Feature Engineering & Transformation (`03_feature_engineering.ipynb`)](#notebook-3-leak-free-feature-engineering--transformation-03_feature_engineeringipynb)
+   - [Notebook 4: Model Training & Tuning (`04_model_training.ipynb`)](#notebook-4-model-training--tuning-04_model_trainingipynb)
+   - [Notebook 5: Evalution (`05_model_evaluation.ipynb`)](#notebook-5-evalution-05_model_evaluationipynb)
 4. [Key Business Insights & Churn Driver Comparison](#-4-key-business-insights--churn-driver-comparison)
-6. [Repository Structure](#-6-repository-structure)
-7. [Author & Contact](#-7-author--contact)
+5. [Repository Structure](#-5-repository-structure)
+6. [Author & Contact](#-6-author--contact)
 
 ---
 
 ## 📌 1. Background Overview & Business Context
 
-### ❓ The Business Problem
+### 📖 Overview
 In e-commerce, Customer Acquisition Cost (CAC) is **5 to 7 times higher** than retention. When customers leave, businesses suffer compound losses: lost Customer Lifetime Value (CLV), wasted acquisition marketing, and lost market share. 
 
 Without predictive modeling, retention teams only discover churn after customers uninstall the app or cease buying, leading to costly and low-conversion win-back efforts.
@@ -107,7 +107,7 @@ notebooks/
 
 ---
 
-### Notebook 1: Data Understanding & Quality Audit (`01_data_understanding.ipynb`)
+### Notebook 1: Data Understanding (`01_data_understanding.ipynb`)
 
 #### 1.1 Ingestion, Schema & Duplicate Check
 * **Code:**
@@ -185,7 +185,7 @@ df.describe().T
 
 ---
 
-### Notebook 2: Exploratory Data Analysis & Churn Dynamics (`02_eda.ipynb`)
+### Notebook 2: Exploratory Data Analysis (`02_eda.ipynb`)
 
 #### 2.1 Numerical Feature Distributions (Histograms)
 * **Code:**
@@ -299,7 +299,7 @@ display(churn_corr)
 
 ---
 
-### Notebook 3: Leak-Free Feature Engineering & Transformation (`03_feature_engineering.ipynb`)
+### Notebook 3: Feature Engineering & Transformation (`03_feature_engineering.ipynb`)
 
 #### 3.1 Distribution Inspection of Missing Columns
 * **Code:**
@@ -450,7 +450,7 @@ test_processed.to_csv('../data/processed/test_processed.csv', index=False)
 
 ---
 
-### Notebook 4: Model Training, Multi-Algorithm Benchmark & Tuning (`04_model_training.ipynb`)
+### Notebook 4: Model Training & Tuning (`04_model_training.ipynb`)
 
 #### 4.1 Evaluation Function & Linear Baseline (Logistic Regression)
 * **Code:**
@@ -504,7 +504,6 @@ xgb.fit(X_train, y_train)
 results.append(evaluate_model(xgb, X_test, y_test, 'XGBoost'))
 ```
 * **Output:** Accuracy: **0.9671**, Precision: **0.8844**, Recall: **0.9263**, F1: **0.9049**, ROC-AUC: **0.9862**.
-<img width="1233" height="372" alt="XGBoost Benchmark Output" src="https://github.com/user-attachments/assets/c7e7abd2-7cf3-43e3-a144-d2b745b4fbee" />
 * **💡 Key Insight:** Solid gradient-boosted performance (F1: 0.9049), but slightly trailed Random Forest in both Recall and Precision.
 
 ---
@@ -585,7 +584,7 @@ joblib.dump(search.best_estimator_, '../models/churn_pipeline.pkl')
 
 ---
 
-### Notebook 5: Rigorous Validation, Cost Analysis & Explainability (`05_model_evaluation.ipynb`)
+### Notebook 5: Evalution (`05_model_evaluation.ipynb`)
 
 #### 5.1 Classification Report on Unseen Test Cohort (N = 1,126)
 * **Code:**
@@ -692,7 +691,7 @@ plt.show()
 
 ---
 
-## 💡 4. Key Business Insights & Churn Driver Comparison
+## 💡 4. Key Business Insights
 
 Comparing the distributions of retained customers (`N = 4,682`) vs. churned customers (`N = 948`) isolates the core operational root causes:
 
@@ -707,7 +706,7 @@ Comparing the distributions of retained customers (`N = 4,682`) vs. churned cust
 
 ---
 
-## 📁 6. Repository Structure
+## 📁 5. Repository Structure
 
 ```
 churn_prediction/
@@ -734,7 +733,7 @@ churn_prediction/
 
 ---
 
-## 👤 7. Author & Contact
+## 👤 6. Author & Contact
 
 * **Author:** **Nguyen Xuan Thu**
 * **Role:** Data Analyst / Machine Learning
