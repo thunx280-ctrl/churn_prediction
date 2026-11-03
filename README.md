@@ -31,7 +31,6 @@
    - [Notebook 4: Model Training, Multi-Algorithm Benchmark & Tuning (`04_model_training.ipynb`)](#notebook-4-model-training-multi-algorithm-benchmark--tuning-04_model_trainingipynb)
    - [Notebook 5: Rigorous Validation, Cost Analysis & Explainability (`05_model_evaluation.ipynb`)](#notebook-5-rigorous-validation-cost-analysis--explainability-05_model_evaluationipynb)
 4. [Key Business Insights & Churn Driver Comparison](#-4-key-business-insights--churn-driver-comparison)
-5. [Customer Risk Segmentation & 3-Tier CRM Retention Matrix](#-5-customer-risk-segmentation--3-tier-crm-retention-matrix)
 6. [Repository Structure](#-6-repository-structure)
 7. [Author & Contact](#-7-author--contact)
 
@@ -125,7 +124,8 @@ df.info()
 df.duplicated().any()  # np.False_
 ```
 * **Output:** Dataset contains **5,630 rows × 20 columns**, with **0 duplicate rows**.
-![df.info()]({D3E28950-EBE7-4F66-B498-6A1C696BFD3C}.png)
+   <img width="1078" height="1125" alt="{DDE53EC8-ED62-4710-83A6-4B7497321311}" src="https://github.com/user-attachments/assets/c277537d-2e82-4f55-af6e-27e5fdaaa8d4" />
+
 * **💡 Key Insight:** Clean tabular schema with no row duplication; initial data types include 8 floats, 7 integers, and 5 text/categorical columns.
 
 ---
@@ -179,7 +179,8 @@ display(missing_df[missing_df['Missing Values'] > 0].sort_values(by='Missing Val
 df.describe().T
 ```
 * **Output:**
-![df.describe().T]({2AA4751E-BFD4-4D5A-8B74-C2BCD59F6DB3}.png)
+<img width="1844" height="1243" alt="{8C28FDF4-002C-4C65-86CE-194DDB39A9F1}" src="https://github.com/user-attachments/assets/c2d536fa-0b06-4665-9cff-07fce5058d48" />
+
 * **💡 Key Insight:** `Tenure` median is 9.0 months (mean 10.19, max 61). `WarehouseToHome` has substantial outliers (mean 15.64 km, max 127 km). Right-skewness in most metrics suggests **median imputation** will be far more robust than mean.
 
 ---
@@ -200,9 +201,12 @@ for col in numerical_cols:
     plt.show()
 ```
 * **Output:**
-![Histograms Part 1]({0D3DDCFD-13C2-4F6C-A73F-AF07002120AC}.png)
-![Histograms Part 2]({2A72A93C-435A-4132-9DA4-1D00B7E473AB}.png)
-![Histograms Part 3]({7D4F3AF0-426F-44FD-932D-4747357CAD9B}.png)
+<img width="1805" height="896" alt="{1246CFEE-FE6A-4B05-99EB-B5177F8BBFFE}" src="https://github.com/user-attachments/assets/7b3297f0-a401-4221-bcf9-1c00cbbe4e29" />
+<img width="1757" height="904" alt="{BA62EDAA-0039-46BF-A948-65D9318AF4E4}" src="https://github.com/user-attachments/assets/f07c8246-61ec-43d2-ad8e-4b46d0f1f973" />
+<img width="1120" height="1701" alt="{3200D24B-EA99-4189-9A52-88135B620504}" src="https://github.com/user-attachments/assets/72089aa7-55d4-43b0-b958-fcc71e512ada" />
+
+
+
 * **💡 Key Insight:** Severe right-skewness observed across `Tenure`, `WarehouseToHome`, `OrderCount`, `CouponUsed`, `DaySinceLastOrder`, and `OrderAmountHikeFromlastYear`. `HourSpendOnApp` is symmetric (mean ≈ median ≈ 3.0).
 
 ---
@@ -217,7 +221,8 @@ for col in numerical_cols:
     plt.show()
 ```
 * **Output:**
-![Boxplots vs Churn]({076227EC-FA82-480D-8DB4-A5930537BA7F}.png)
+<img width="1466" height="739" alt="{3E220098-6E08-4F6C-B227-93B02D4A02F7}" src="https://github.com/user-attachments/assets/eb9bc5fa-1ac1-4644-a545-a37abd9ad87e" />
+
 * **💡 Key Insight:** Churned customers have a median tenure of only **2–3 months** (versus 10+ months for retained accounts). Churned accounts also exhibit higher fulfillment distances and substantially lower cashback earnings.
 
 ---
@@ -243,7 +248,10 @@ for col in categorical_cols:
     plt.show()
 ```
 * **Output:**
-> 📷 *(Image placeholder: Categorical countplots & churn rate bar charts)*
+<img width="1249" height="1316" alt="{BF629EA0-6A2B-478A-A955-0DA0D0F56326}" src="https://github.com/user-attachments/assets/97cdad2d-11da-4a25-aa79-4323c84e1e5b" />
+<img width="1238" height="646" alt="{15C40CEE-A813-4390-942C-BC6E1C4CD138}" src="https://github.com/user-attachments/assets/4a107496-2d69-4b95-82a2-68eafa8a46a4" />
+<img width="1549" height="762" alt="{43D08340-6EB5-4055-9D02-59CB5D8F0538}" src="https://github.com/user-attachments/assets/cb78d6a1-42f9-4384-945e-1ae4f0a5caf4" />
+
 * **Key Numbers from Notebook:**
   * `Complain = 1`: **31.7% churn rate** vs. `Complain = 0`: **10.9%** (**2.9× increase**).
   * `MaritalStatus`: `Single` accounts churn at **26.7%**, vs. `Divorced` (14.6%) and `Married` (11.5%).
@@ -306,7 +314,9 @@ for col in list_null:
     plt.show()
 ```
 * **Output:**
-> 📷 *(Image placeholder: Value distribution bar plots for the 7 missing columns)*
+<img width="2739" height="757" alt="{2561A923-F6FA-4029-844C-7AC3942F57DE}" src="https://github.com/user-attachments/assets/01535caa-237a-4abb-ac46-8ca64d659fbb" />
+<img width="1063" height="1766" alt="{12FED45F-B778-474C-8BD4-891DFC7B7A30}" src="https://github.com/user-attachments/assets/6e072712-edbf-41c2-b7ca-e73074d30a0a" />
+
 * **💡 Key Insight:** Confirms severe skewness across missing columns, justifying median imputation over mean.
 
 ---
@@ -466,7 +476,6 @@ lr.fit(X_train, y_train)
 results = [evaluate_model(lr, X_test, y_test, 'LogisticRegression')]
 ```
 * **Output:** Accuracy: **0.8242**, Precision: **0.4879**, Recall: **0.8474**, F1: **0.6192**, ROC-AUC: **0.9043**.
-<img width="1242" height="198" alt="Logistic Regression Benchmark Output" src="https://github.com/user-attachments/assets/a2fb3b09-f4ab-4b77-abb9-c47a1956f124" />
 * **💡 Key Insight:** Baseline captures 84.74% of churners, but precision below 50% means over half of its churn alerts are false alarms.
 
 ---
@@ -479,7 +488,6 @@ rf.fit(X_train, y_train)
 results.append(evaluate_model(rf, X_test, y_test, 'RandomForest'))
 ```
 * **Output:** Accuracy: **0.9751**, Precision: **0.9091**, Recall: **0.9474**, F1: **0.9278**, ROC-AUC: **0.9928**.
-<img width="1272" height="289" alt="Random Forest Benchmark Output" src="https://github.com/user-attachments/assets/81b8a846-74bc-48c3-af24-ad8a8ce3622f" />
 * **💡 Key Insight:** Drastic performance leap over linear baseline: Recall reaches **94.74%** while Precision jumps from 48.79% to **90.91%**.
 
 ---
