@@ -27,10 +27,10 @@
 3. [End-to-End Machine Learning Workflow (5 Notebooks)](#-3-end-to-end-machine-learning-workflow-5-notebooks)
    - [Notebook 1: Data Understanding (`01_data_understanding.ipynb`)](#notebook-1-data-understanding-01_data_understandingipynb)
    - [Notebook 2: Exploratory Data Analysis (`02_eda.ipynb`)](#notebook-2-exploratory-data-analysis-02_edaipynb)
-   - [Notebook 3: Feature Engineering & Transformation (`03_feature_engineering.ipynb`)](#notebook-3-leak-free-feature-engineering--transformation-03_feature_engineeringipynb)
+   - [Notebook 3: Feature Engineering & Transformation (`03_feature_engineering.ipynb`)](#notebook-3-feature-engineering--transformation-03_feature_engineeringipynb)
    - [Notebook 4: Model Training & Tuning (`04_model_training.ipynb`)](#notebook-4-model-training--tuning-04_model_trainingipynb)
    - [Notebook 5: Evalution (`05_model_evaluation.ipynb`)](#notebook-5-evalution-05_model_evaluationipynb)
-4. [Key Business Insights & Churn Driver Comparison](#-4-key-business-insights--churn-driver-comparison)
+4. [Key Business Insights & Churn Driver Comparison](#-4-key-business-insights)
 5. [Repository Structure](#-5-repository-structure)
 6. [Author & Contact](#-6-author--contact)
 
